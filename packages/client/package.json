@@ -1,0 +1,11 @@
+{
+  "name": "@poker-gitano/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:types -w @poker-gitano/engine && tsc -p .",
+    "typecheck": "npm run build:types -w @poker-gitano/engine && tsc --noEmit -p ."
+  }
+}

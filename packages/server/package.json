@@ -1,0 +1,3 @@
+{ "name": "@poker-gitano/server", "version": "0.1.0", "type": "module", "license": "MIT",
+  "dependencies": { "@poker-gitano/engine": "*" },
+  "scripts": { "start": "tsx src/main.ts", "test": "tsx --test test/*.test.ts", "typecheck": "tsc --noEmit" } }

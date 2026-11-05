@@ -1,0 +1,24 @@
+# Blueprint de Render (plan gratuito). Render → New → Blueprint → elige este repositorio.
+services:
+  - type: web
+    name: poker-gitano
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: TRUST_PROXY        # Render pone un proxy delante: se usa la IP real del cliente
+        value: "1"
+      - key: SITE_URL           # https://TU-SERVICIO.onrender.com (o tu dominio cuando lo tengas), sin barra final
+        sync: false
+      - key: OWNER_NAME
+        sync: false
+      - key: OWNER_EMAIL
+        sync: false
+      - key: HOSTING_PROVIDER
+        value: Render Services, Inc.

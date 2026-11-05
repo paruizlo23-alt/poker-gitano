@@ -1,0 +1,20 @@
+{
+  "name": "poker-gitano",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "start": "tsx packages/server/src/main.ts",
+    "test": "npm test -w @poker-gitano/engine && npm test -w @poker-gitano/server",
+    "typecheck": "npm run typecheck -w @poker-gitano/engine && npm run typecheck -w @poker-gitano/server && npm run typecheck -w @poker-gitano/client",
+    "build": "npm run build -w @poker-gitano/client",
+    "pages": "python3 scripts/gen-pages.py",
+    "demo": "node packages/client/demo/build.mjs",
+    "e2e": "node packages/client/e2e/play.mjs"
+  },
+  "dependencies": { "tsx": "^4.21.0" },
+  "devDependencies": { "typescript": "^6.0.3", "esbuild": "^0.27.0", "playwright": "^1.56.0" }
+}
