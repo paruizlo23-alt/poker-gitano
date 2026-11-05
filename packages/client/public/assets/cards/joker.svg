@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208 319" role="img" aria-label="Joker">
+  <defs>
+    <path id="star" d="M0-14L3.4-5 12-9.9 7.1-1.4 14 0 7.1 1.4 12 9.9 3.4 5 0 14-3.4 5-12 9.9-7.1 1.4-14 0-7.1-1.4-12-9.9-3.4-5Z"/>
+    <path id="horn" d="M0 0C-9-10-12-28-6-42C-1-30 6-14 0 0Z"/>
+  </defs>
+  <rect x=".5" y=".5" width="207" height="318" rx="12" fill="#f6f0dd" stroke="#2b2a8c" stroke-width="1"/>
+  <g fill="#2b2a8c"><use href="#star" x="22" y="24" transform="scale(.9)" style="transform-box:fill-box"/><use href="#star" x="186" y="24"/><use href="#star" x="22" y="295"/><use href="#star" x="186" y="295"/></g>
+  <g fill="#f6f0dd"><circle cx="22" cy="24" r="3.2"/><circle cx="186" cy="24" r="3.2"/><circle cx="22" cy="295" r="3.2"/><circle cx="186" cy="295" r="3.2"/></g>
+  <text x="104" y="62" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" font-size="20" letter-spacing="3" fill="#2b2a8c">★ ★ ★</text>
+  <ellipse cx="104" cy="160" rx="72" ry="78" fill="#2b2a8c"/>
+  <ellipse cx="104" cy="160" rx="66" ry="72" fill="none" stroke="#f6f0dd" stroke-width="1.6"/>
+  <!-- sombrero de bufón: tres puntas con cascabeles -->
+  <g fill="#f6f0dd" stroke="#2b2a8c" stroke-width="2">
+    <use href="#horn" transform="translate(104 118) rotate(-52) scale(1.05)"/>
+    <use href="#horn" transform="translate(104 116) scale(1.15)"/>
+    <use href="#horn" transform="translate(104 118) rotate(52) scale(1.05)"/>
+  </g>
+  <g fill="#f6f0dd" stroke="#2b2a8c" stroke-width="2"><circle cx="63" cy="85" r="5"/><circle cx="104" cy="70" r="5.5"/><circle cx="145" cy="85" r="5"/></g>
+  <path d="M70 128Q104 108 138 128L134 142Q104 128 74 142Z" fill="#2b2a8c" stroke="#f6f0dd" stroke-width="1.5"/>
+  <!-- cara -->
+  <ellipse cx="104" cy="160" rx="30" ry="36" fill="#f6f0dd" stroke="#f6f0dd"/>
+  <path d="M82 150Q90 144 98 150M110 150Q118 144 126 150" stroke="#2b2a8c" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <circle cx="90" cy="153" r="2.6" fill="#2b2a8c"/><circle cx="118" cy="153" r="2.6" fill="#2b2a8c"/>
+  <path d="M104 156V168" stroke="#2b2a8c" stroke-width="2" stroke-linecap="round"/>
+  <path d="M90 176Q104 188 118 176" stroke="#2b2a8c" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+  <path d="M86 188Q104 214 122 188Q104 200 86 188Z" fill="#2b2a8c"/>
+  <!-- golilla -->
+  <g fill="#f6f0dd" stroke="#2b2a8c" stroke-width="1.6"><path d="M66 208L78 192 86 214 98 196 104 218 110 196 122 214 130 192 142 208 130 226H78Z"/></g>
+  <!-- abanico de cartas -->
+  <g stroke="#f6f0dd" stroke-width="1.8" fill="#2b2a8c"><rect x="128" y="196" width="26" height="38" rx="3" transform="rotate(18 141 215)"/><rect x="134" y="192" width="26" height="38" rx="3" transform="rotate(34 147 211)"/><rect x="48" y="190" width="26" height="38" rx="3" transform="rotate(-24 61 209)"/></g>
+  <path d="M60 232Q104 252 148 232" stroke="#f6f0dd" stroke-width="1.6" fill="none"/>
+  <text x="104" y="278" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-style="italic" font-weight="700" font-size="30" letter-spacing="2" fill="#2b2a8c">Joker</text>
+</svg>
