@@ -7,6 +7,7 @@ declare module 'node:crypto' { export const randomInt: any, randomBytes: any, cr
 declare module 'node:http' { export const createServer: any; export type IncomingMessage = any; export type Server = any }
 declare module 'node:fs' { export const promises: any, mkdirSync: any, readdirSync: any, readFileSync: any }
 declare module 'node:net' { export const connect: any }
+declare module 'node:os' { export const tmpdir: any }
 declare module 'node:path' { export const join: any, normalize: any, extname: any, resolve: any }
 declare module 'node:test' { export function test(name: string, fn: () => void | Promise<void>): void }
 declare module 'node:assert/strict' {

@@ -7,6 +7,8 @@ COPY packages/server/package.json packages/server/
 COPY packages/client/package.json packages/client/
 RUN npm install --omit=dev
 COPY packages ./packages
+# carpeta de datos escribible por el usuario no privilegiado (sin esto: EACCES al arrancar)
+RUN mkdir -p /app/data && chown -R node:node /app/data
 ENV NODE_ENV=production PORT=8080 TRUST_PROXY=1
 EXPOSE 8080
 USER node
