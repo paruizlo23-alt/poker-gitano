@@ -156,7 +156,8 @@ export function createGameServer(manager: RoomManager, opts: ServerOptions = {})
   beat.unref?.(); sweep.unref?.();
   return {
     server,
-    listen: (port: number) => new Promise<number>((resolve) => server.listen(port, () => resolve(server.address().port))),
+    // 0.0.0.0 explícito: los proxies de las plataformas (Render, Docker) conectan por IPv4
+    listen: (port: number, host = '0.0.0.0') => new Promise<number>((resolve) => server.listen(port, host, () => resolve(server.address().port))),
     close: () => new Promise<void>((resolve) => { clearInterval(beat); clearInterval(sweep); for (const c of conns) c.close(1001); for (const r of manager.rooms.values()) r.dispose(); server.close(() => resolve()); server.closeAllConnections?.(); }),
   };
 }

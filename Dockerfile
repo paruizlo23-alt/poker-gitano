@@ -9,7 +9,8 @@ RUN npm install --omit=dev
 COPY packages ./packages
 # carpeta de datos escribible por el usuario no privilegiado (sin esto: EACCES al arrancar)
 RUN mkdir -p /app/data && chown -R node:node /app/data
-ENV NODE_ENV=production PORT=8080 TRUST_PROXY=1
-EXPOSE 8080
+# Render usa 10000 por defecto y lo inyecta en PORT; coincidir evita desajustes de puerto
+ENV NODE_ENV=production PORT=10000 TRUST_PROXY=1
+EXPOSE 10000
 USER node
 CMD ["npm", "start"]
