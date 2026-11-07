@@ -6,7 +6,7 @@ import { createGameServer } from '../src/server.js';
 import type { SiteConfig } from '../src/config.js';
 
 const PUBLIC = new URL('../../client/public', import.meta.url).pathname;
-const SITE: SiteConfig = { siteUrl: 'https://ejemplo.test', ownerName: 'Pablo Ruiz Lozano', ownerAddress: 'Puente Genil (Córdoba), España', ownerEmail: 'titular@ejemplo.test', ownerNif: '12345678Z', hosting: 'Proveedor X', deckCredit: 'una baraja libre' };
+const SITE: SiteConfig = { siteUrl: 'https://ejemplo.test', ownerName: 'Ana Pérez Gómez', ownerAddress: 'Calle Falsa 123, Madrid', ownerEmail: 'titular@ejemplo.test', ownerNif: '12345678Z', hosting: 'Proveedor X', deckCredit: 'una baraja libre' };
 async function boot(site: SiteConfig) {
   const app = createGameServer(new RoomManager({}), { staticDir: PUBLIC, site });
   const port = await app.listen(0); return { app, http: `http://127.0.0.1:${port}` };
@@ -45,7 +45,7 @@ test('titular: datos reales escapados; sin NIF se avisa visiblemente', async () 
   assert.ok(!t.includes('<script>x</script>')); assert.ok(t.includes('A&lt;script&gt;x&lt;/script&gt;&amp;&quot;B'));
   await evil.app.close();
   const ok = await boot(SITE); const a = (await get(ok.http, '/aviso-legal')).t;
-  for (const v of ['Pablo Ruiz Lozano', 'Puente Genil', 'titular@ejemplo.test', '12345678Z']) assert.ok(a.includes(v), v);
+  for (const v of ['Ana Pérez Gómez', 'Calle Falsa', 'titular@ejemplo.test', '12345678Z']) assert.ok(a.includes(v), v);
   await ok.app.close();
   // sin NIF: no se muestra línea de NIF y se declara proyecto personal sin publicidad
   const noNif = await boot({ ...SITE, ownerNif: '' }); const n = (await get(noNif.http, '/aviso-legal')).t;
@@ -83,7 +83,7 @@ test('SEO: robots y sitemap con dominio absoluto; JSON-LD en portada y FAQ coher
 });
 test('legal: el código fuente de /public no contiene datos personales fijos ni NIF', () => {
   const files = (readdirSync(PUBLIC) as string[]).filter((f) => f.endsWith('.html'));
-  for (const f of files) { const t = readFileSync(`${PUBLIC}/${f}`, 'utf8'); assert.ok(!/ruizlozano|gmail\.com|Puente Genil/i.test(t), `${f} lleva datos personales fijos`); }
+  for (const f of files) { const t = readFileSync(`${PUBLIC}/${f}`, 'utf8'); assert.ok(!/@(gmail|hotmail|yahoo|outlook)\./i.test(t), `${f} lleva un correo personal fijo`); }
 });
 
 test('sin NIF la publicidad NO se activa aunque haya ID de AdSense (art. 10 LSSI-CE)', async () => {
@@ -119,7 +119,7 @@ test('config: sin OWNER_NIF la publicidad NO se activa aunque haya ADSENSE_CLIEN
 
 test('domicilio opcional: sin él la línea desaparece (sin avisos de pendiente); con él se muestra escapado', async () => {
   const none = await boot({ ...SITE, ownerAddress: '', ownerNif: '' });
-  for (const p of ['/aviso-legal', '/privacidad']) { const x = (await get(none.http, p)).t; assert.ok(!x.includes('Domicilio')); assert.ok(!/pendiente/i.test(x), `${p} muestra un aviso de pendiente`); assert.ok(x.includes('Pablo Ruiz Lozano') && x.includes('titular@ejemplo.test')); }
+  for (const p of ['/aviso-legal', '/privacidad']) { const x = (await get(none.http, p)).t; assert.ok(!x.includes('Domicilio')); assert.ok(!/pendiente/i.test(x), `${p} muestra un aviso de pendiente`); assert.ok(x.includes('Ana Pérez Gómez') && x.includes('titular@ejemplo.test')); }
   await none.app.close();
   const some = await boot({ ...SITE, ownerAddress: 'Calle <b>1</b>' }); const y = (await get(some.http, '/aviso-legal')).t;
   assert.ok(y.includes('Domicilio:') && y.includes('Calle &lt;b&gt;1&lt;/b&gt;')); await some.app.close();
